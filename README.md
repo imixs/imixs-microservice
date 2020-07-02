@@ -251,6 +251,10 @@ Find more details about the Imixs-Rest API [here](http://www.imixs.org/doc/resta
 
 Imixs-Workflow supports both data formats - XML and JSON. It is recommended to use XML as this data format allows you to define data types. See the [Imixs-Rest API Service](https://www.imixs.org/doc/restapi/index.html) how to use JSON objects. 
 
+### Microservice SAGA Pattern
+
+With the Microservice SAGA Pattern you can build a so called SAGA orchestrator to coordinate more complex business processes. The Imixs Project provides the sub project [Imixs SAGA](https://github.com/imixs/imixs-saga). This project extends the concepts of the Imixs-Microservice and allows the orchestration of multiple services within a microservice architecture. 
+
 
 # <img src="https://github.com/imixs/imixs-microservice/raw/master/small_h-trans.png">
 
@@ -431,17 +435,6 @@ To access the Imixs-Microservice form a Java application you can use the Imixs-W
 ### JUnit Tests
 
 The Imixs-Microservice project provide a set of JUnit Tests. These tests can be used also as a starting point to learn how the RestService API works.
-
-
-# Registry
-
-The Imixs-Microservice project provides a registry service for registration and discovery of workflow services within a microservice architecture. This allows a client to start a new process instance within a microservice architecture without knowning the model details about a concrete workflow instance. 
-
-To activate this feature in a Imixs-Microservice instance you just have to add the envorinment variable _imixs.registry.serviceendpoint_ pointing to the service endpoint of a running Imixs-Registry service. 
-
-	IMIXS_REGISTRY_SERVICEENDPOINT: "http://registry:8080/api"
-
-Find details in the [Imixs-Registry](https://github.com/imixs/imixs-microservice/tree/master/imixs-microservice-registry-app) sub project.
 
 
 # Monitoring
