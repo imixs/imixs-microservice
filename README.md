@@ -3,10 +3,11 @@
 [![Join the chat at https://gitter.im/imixs/imixs-workflow](https://badges.gitter.im/imixs/imixs-workflow.svg)](https://gitter.im/imixs/imixs-workflow?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![License](https://img.shields.io/badge/license-GPL-blue.svg)](https://github.com/imixs/imixs-microservice/blob/master/LICENSE)
 
-[Imixs-Workflow](http://www.imixs.org) is an open source workflow engine for human-centric business process management (BPM). Human-centric BPM means to support human skills and activities by a task orientated workflow-engine. Read more about Imixs-Workflow [here](http://www.imixs.org).
+
+The Imixs-Microservice is running the [Imixs-Workflow Engine](https://www.imixs.org/doc/index.html) into a microservice. This microservice can be bound to any business application, independent from the technology behind. [Imixs-Workflow](http://www.imixs.org) is an open source workflow engine for human-centric business process management (BPM). Human-centric BPM means to support human skills and activities by a task orientated workflow-engine. Read more about Imixs-Workflow [here](http://www.imixs.org).
 
 ## The Rest API
-The Imixs-Microservice project encapsulates the [Imixs-Workflow Engine](https://www.imixs.org/doc/index.html) into a microservice to be bound to any business application, independent from the technology behind. In this architectural style the business logic can be changed without changing a single line of code. 
+
 Imixs-Microservice provides a Rest API to interact with the Imixs-Workflow Engine. See the [Imixs-Workflow Rest API](http://www.imixs.org/doc/restapi/index.html) for more information.
 
 ## BPMN 2.0
@@ -24,7 +25,7 @@ Imixs-Microservice is based on the [Jakarta EE](https://jakarta.ee/) and [Eclips
 
 ### Run with Docker
 
-Imixs-Microservice provides a docker image, making it easy to run the Imixs-Microservice out of the box in a Docker container. This container image can be used for development as also for productive purpose. The docker image is based on payara-micro which is optimized for cloud environments like Kubernetes, OpenShift or Docker-Swarm. 
+Imixs-Microservice provides also a docker image, making it easy to run the Imixs-Microservice out of the box in a Docker container. This container image can be used for development as also for productive purpose. The docker image is based on payara-micro which is optimized for cloud environments like Kubernetes, OpenShift or Docker-Swarm. 
 
 To start the Imixs-Microservice you just need to define a container stack with Docker Compose. A docker-compose.yml file is already part of the project and can be downloaded from [here](https://github.com/imixs/imixs-microservice/blob/master/docker-compose.yml). 
 
@@ -62,6 +63,27 @@ You can add or change accounts by updating the property files:
  * _imixs-users.properties_
  
 And of course  you can configure a different custom security realm (e.g. LDAP). 
+
+   
+## The Imixs-Admin Client
+
+When you start the docker-compose setup also an additional admin service will be started. The [Imixs-Admin Client](http://www.imixs.org/doc/administration.html) is a web tool to administrate a running instance of the Imixs-Workflow Engine. 
+
+You can open the Imixs-Admin Client from your browser with at the following location:
+
+	http://localhost:8888/
+
+<img src="https://github.com/imixs/imixs-microservice/raw/master/screen_imixs-admin-client-01.png" width="800" /> 
+
+The connect URL to connect the Imixs-Admin Tool with your microservice is *http://app:8080/api*
+
+Within the Imixs-Admin client you can manage your BPMN models and you can search and inspect running process instances. 
+To learn more about all the Imixs-Admin client, see the [official documentation](http://www.imixs.org/doc/administration.html). 
+
+
+
+
+
 
 # How to Work With the Imixs-Microservice
 
@@ -132,9 +154,9 @@ The example below shows how to post a new Workitem in the XML format using the _
 		<item name="$taskid"><value xsi:type="xs:int">1000</value></item>
 		<item name="$eventid"><value xsi:type="xs:int">10</value></item>
 		<item name="_subject">
-			<value xsi:type="xs:string">some data...</value>
-			<value xsi:type="xs:string">more data...</value>
-		</item>
+	            <value xsi:type="xs:string">some data...</value>
+	            <value xsi:type="xs:string">more data...</value>
+	        </item>
 	   </document>' \
 	  http://localhost:8080/api/workflow/workitem
 
@@ -352,22 +374,6 @@ You can map a local deployment directory for hot-deployment and model soruces:
 	    - ~/git/imixs-microservice/src/model/:/home/imixs/model/
 	    - ~/git/imixs-microservice/src/docker/deployments:/opt/wildfly/standalone/deployments/
     ...
-
-
-   
-## The Imixs-Admin Client
-
-In the developer mode the service provides an additional admin service. The [Imixs-Admin Client](http://www.imixs.org/doc/administration.html) is a web tool to administrate a running instance of the Imixs-Workflow Engine. The Imixs-Admin tool is automatically deployed when running Imixs-Microservice based on the official Docker Container. 
-
-<img src="https://github.com/imixs/imixs-microservice/raw/master/screen_imixs-admin-client-01.png" width="800" /> 
-
-You can open the Imixs-Admin Client from your browser with at the following location:
-
-	http://localhost:8888/
-
-The connect URL to connect the Imixs-Admin Tool with your microservice is _http://app:8080/api_
-
-To learn more about all the Imixs-Admin client, see the [official documentation](http://www.imixs.org/doc/administration.html). 
 
 
 
