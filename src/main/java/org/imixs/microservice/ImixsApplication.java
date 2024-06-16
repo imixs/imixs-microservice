@@ -28,6 +28,9 @@
 
 package org.imixs.microservice;
 
+import org.eclipse.microprofile.openapi.annotations.OpenAPIDefinition;
+import org.eclipse.microprofile.openapi.annotations.info.Info;
+
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
 
@@ -38,7 +41,8 @@ import jakarta.ws.rs.core.Application;
  * @version 1.0
  */
 
-@ApplicationPath("/")
+@OpenAPIDefinition(info = @Info(title = "Imixs-Microservice", version = "3.0.0"))
+@ApplicationPath("/api")
 public class ImixsApplication extends Application {
 
     public static final String ENV_IMIXS_MODEL = "IMIXS_MODEL";
