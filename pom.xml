@@ -4,16 +4,18 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.imixs.workflow</groupId>
 	<artifactId>imixs-microservice</artifactId>
-	<version>2.1.0</version>
+	<version>3.0.0</version>
 	<packaging>war</packaging>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.imixs.workflow.version>5.2.1</org.imixs.workflow.version>
+		<org.imixs.workflow.version>6.0.6</org.imixs.workflow.version>
+		<microprofile.version>6.0</microprofile.version>
 		<custom.webResources>src/main/webapp</custom.webResources>
 	</properties>
 	
 	<repositories>
+		<!-- Sonatype Snapshot repository -->
 		<repository>
 			<id>sonatype-snaptshots</id>
 			<name>Sonatype Snapshot repository</name>
@@ -37,37 +39,10 @@
 			<id>docker</id>
 			<build>
 				<plugins>
-					<!-- copy artifact into docker/apps -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-dependency-plugin</artifactId>
-						<version>2.8</version>
-						<executions>
-							<execution>
-								<id>copy-installed</id>
-								<phase>install</phase>
-								<goals>
-									<goal>copy</goal>
-								</goals>
-								<configuration>
-									<artifactItems>
-										<artifactItem>
-											<groupId>${project.groupId}</groupId>
-											<artifactId>${project.artifactId}</artifactId>
-											<version>${project.version}</version>
-											<type>${project.packaging}</type>
-										</artifactItem>
-									</artifactItems>
-									<outputDirectory>${project.basedir}/src/docker/apps</outputDirectory>
-									<stripVersion>true</stripVersion>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-antrun-plugin</artifactId>
-						<version>1.8</version>
+						<version>3.1.0</version>
 						<executions>
 							<execution>
 								<phase>install</phase>
@@ -95,37 +70,11 @@
 			<id>docker-hub</id>
 			<build>
 				<plugins>
-					<!-- copy artifact into docker/apps -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-dependency-plugin</artifactId>
-						<version>2.8</version>
-						<executions>
-							<execution>
-								<id>copy-installed</id>
-								<phase>install</phase>
-								<goals>
-									<goal>copy</goal>
-								</goals>
-								<configuration>
-									<artifactItems>
-										<artifactItem>
-											<groupId>${project.groupId}</groupId>
-											<artifactId>${project.artifactId}</artifactId>
-											<version>${project.version}</version>
-											<type>${project.packaging}</type>
-										</artifactItem>
-									</artifactItems>
-									<outputDirectory>${project.basedir}/src/docker/apps</outputDirectory>
-									<stripVersion>true</stripVersion>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
+					
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-antrun-plugin</artifactId>
-						<version>1.8</version>
+						<version>3.1.0</version>						
 						<executions>
 							<execution>
 								<phase>install</phase>
@@ -157,37 +106,11 @@
 			<id>docker-hub-latest</id>
 			<build>
 				<plugins>
-					<!-- copy artifact into docker/apps -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-dependency-plugin</artifactId>
-						<version>2.8</version>
-						<executions>
-							<execution>
-								<id>copy-installed</id>
-								<phase>install</phase>
-								<goals>
-									<goal>copy</goal>
-								</goals>
-								<configuration>
-									<artifactItems>
-										<artifactItem>
-											<groupId>${project.groupId}</groupId>
-											<artifactId>${project.artifactId}</artifactId>
-											<version>${project.version}</version>
-											<type>${project.packaging}</type>
-										</artifactItem>
-									</artifactItems>
-									<outputDirectory>${project.basedir}/src/docker/apps</outputDirectory>
-									<stripVersion>true</stripVersion>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
+
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-antrun-plugin</artifactId>
-						<version>1.8</version>
+						<version>3.1.0</version>
 						<executions>
 							<execution>
 								<phase>install</phase>
@@ -301,78 +224,28 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>3.11.0</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-
-			<!-- release management -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>2.5.3</version>
-				<configuration>
-					<autoVersionSubmodules>true</autoVersionSubmodules>
-					<useReleaseProfile>false</useReleaseProfile>
-					<releaseProfiles>release</releaseProfiles>
-					<goals>deploy</goals>
-				</configuration>
-			</plugin>
-			<!-- release to Maven central -->
-			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>1.6.8</version>
-				<extensions>true</extensions>
-				<configuration>
-					<serverId>ossrh</serverId>
-					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-					<autoReleaseAfterClose>true</autoReleaseAfterClose>
-				</configuration>
-			</plugin>
-
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-site-plugin</artifactId>
-				<version>3.9.0</version>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>3.1.0</version>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.2.0</version>
-				<configuration>
-					<additionalOptions>-Xdoclint:none</additionalOptions>
-				</configuration>
-			</plugin>
-			
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.6</version>
-				<configuration>
-					<encoding>${project.build.sourceEncoding}</encoding>
+					<source>11</source>
+					<target>11</target>
 				</configuration>
 			</plugin>
 		
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.4</version>
+				<version>3.4.0</version>
 				<configuration>
 					<webResources>
 						<resource>
+							<filtering>true</filtering>
 							<!-- this is relative to the pom.xml directory -->
 							<directory>${custom.webResources}</directory>
+							<includes>
+								<include>**/WEB-INF/*</include>
+								<include>/src/main/resources/*</include>
+								<!-- include any other file types you want to filter -->
+							</includes>
 						</resource>
 					</webResources>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
@@ -382,13 +255,11 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.6</version>
+				<version>3.3.1</version>
 				<configuration>
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
 			</plugin>
-
-
 		</plugins>
 
 		<!-- test directory for junit -->
@@ -397,12 +268,27 @@
 				<directory>${project.parent.basedir}/src/model</directory>
 			</testResource>
 		</testResources>
-
 		<finalName>imixs-microservice</finalName>
 	</build>
 
 
 	<dependencies>
+		<!-- JEE Dependencies -->
+		<dependency>
+			<groupId>jakarta.platform</groupId>
+			<artifactId>jakarta.jakartaee-api</artifactId>
+			<version>10.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Microprofile -->
+		<dependency>
+			<groupId>org.eclipse.microprofile</groupId>
+			<artifactId>microprofile</artifactId>
+			<version>${microprofile.version}</version>
+			<type>pom</type>
+			<scope>provided</scope>
+		</dependency>		
 
 		<!-- Imixs Workflow -->
 		<dependency>
@@ -421,34 +307,11 @@
 			<version>${org.imixs.workflow.version}</version>
 		</dependency>
 
-		<!-- Imixs-Adapter Apache Kafka (since version 1.6.3) <dependency> <groupId>org.imixs.workflow</groupId> 
-			<artifactId>imixs-adapters-kafka</artifactId> <version>${org.imixs.adapters.version}</version> 
-			<scope>compile</scope> </dependency> -->
-
-	
-
 		<!-- swagger -->
 		<dependency>
 			<groupId>org.microprofile-ext.openapi-ext</groupId>
 			<artifactId>openapi-ui</artifactId>
 			<version>1.1.3</version>
-		</dependency>
-		
-			<!-- Jakarta EE -->
-		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>8.0</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- Microprofile -->
-		<dependency>
-			<groupId>org.eclipse.microprofile</groupId>
-			<artifactId>microprofile</artifactId>
-			<version>2.2</version>
-			<type>pom</type>
-			<scope>provided</scope>
 		</dependency>
 
 	</dependencies>
