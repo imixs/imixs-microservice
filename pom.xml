@@ -13,7 +13,7 @@
 		<microprofile.version>6.0</microprofile.version>
 		<custom.webResources>src/main/webapp</custom.webResources>
 	</properties>
-	
+
 	<repositories>
 		<!-- Sonatype Snapshot repository -->
 		<repository>
@@ -70,11 +70,11 @@
 			<id>docker-hub</id>
 			<build>
 				<plugins>
-					
+
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-antrun-plugin</artifactId>
-						<version>3.1.0</version>						
+						<version>3.1.0</version>
 						<executions>
 							<execution>
 								<phase>install</phase>
@@ -137,7 +137,6 @@
 				</plugins>
 			</build>
 		</profile>
-		
 
 
 		<!-- wildfly profile (development - unpacking war) -->
@@ -230,7 +229,19 @@
 					<target>11</target>
 				</configuration>
 			</plugin>
-		
+
+
+			<!-- use JDK settings for compiling -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+				</configuration>
+			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
@@ -288,7 +299,7 @@
 			<version>${microprofile.version}</version>
 			<type>pom</type>
 			<scope>provided</scope>
-		</dependency>		
+		</dependency>
 
 		<!-- Imixs Workflow -->
 		<dependency>

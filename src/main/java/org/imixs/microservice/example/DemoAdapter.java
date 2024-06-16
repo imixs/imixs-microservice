@@ -30,11 +30,13 @@ package org.imixs.microservice.example;
 
 import java.util.List;
 import java.util.logging.Logger;
-import javax.ejb.EJB;
+
 import org.imixs.workflow.ItemCollection;
 import org.imixs.workflow.SignalAdapter;
 import org.imixs.workflow.engine.ModelService;
 import org.imixs.workflow.exceptions.AdapterException;
+
+import jakarta.ejb.EJB;
 
 /**
  * This adapter class demonstrates the CDI behavior of an imixs workflow
