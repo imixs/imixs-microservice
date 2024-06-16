@@ -38,7 +38,7 @@ import jakarta.ws.rs.core.Application;
  * @version 1.0
  */
 
-@ApplicationPath("/api")
+@ApplicationPath("/")
 public class ImixsApplication extends Application {
 
     public static final String ENV_IMIXS_MODEL = "IMIXS_MODEL";

@@ -1,23 +1,17 @@
-#FROM payara/server-full:5.201
-FROM payara/micro:5.201
-#FROM payara/micro:5.194
+FROM quay.io/wildfly/wildfly:27.0.1.Final-jdk11
 
-# Imixs-Microservice Version payara-micro
-MAINTAINER ralph.soika@imixs.com
+LABEL description="Imixs-Microservice"
+LABEL maintainer="ralph.soika@imixs.com"
 
-# add configuration files
-USER root
-RUN mkdir ${PAYARA_HOME}/config
-# Copy domain.xml
-COPY ./src/docker/conf/payara-micro/domain.xml ${PAYARA_HOME}/config/
-COPY ./src/docker/conf/payara-micro/keyfile ${PAYARA_HOME}/config/
-# Deploy artefacts
-COPY ./src/docker/conf/payara-micro/postgresql-42.2.5.jar ${PAYARA_HOME}/config
-COPY ./src/docker/apps/* $DEPLOY_DIR
+# Copy EclipseLink and Postgres Driver
+COPY ./docker/configuration/wildfly/modules/ /opt/jboss/wildfly/modules/
 
-RUN chown -R payara:payara ${PAYARA_HOME}/config
-USER payara
-WORKDIR ${PAYARA_HOME}
+# Setup configuration
+COPY ./docker/configuration/wildfly/*.properties /opt/jboss/wildfly/standalone/configuration/
+COPY ./docker/configuration/wildfly/standalone.xml /opt/jboss/wildfly/standalone/configuration/
 
-# add lauch options
-CMD ["--addLibs","/opt/payara/config/postgresql-42.2.5.jar", "--deploymentDir", "/opt/payara/deployments", "--rootDir", "/opt/payara/config","--domainConfig", "/opt/payara/config/domain.xml"]
+# Deploy artefact
+ADD ./target/*.war /opt/jboss/wildfly/standalone/deployments/
+WORKDIR /opt/jboss/wildfly
+# Run with management interface
+CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
