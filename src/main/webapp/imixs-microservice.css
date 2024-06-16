@@ -86,14 +86,17 @@ body {
     padding: 50px 10px 20px 30px;
     background-color: #FCB802;
 }
+
 #imixs-logo {
-    float: left;
-    background-image: url("logo.png");
-    background-repeat: no-repeat;
-    background-position: 15px 5px;
-    height: 80px;
-    width: 164px;
-}
+	float: left;
+	background-image: url("logo.png");
+	background-repeat: no-repeat;
+	background-position: 20px 2px;
+	background-size: 95px;
+	height: 80px;
+	width: 145px;
+  }
+
 #imixs-branding {
     line-height: normal;
 }
