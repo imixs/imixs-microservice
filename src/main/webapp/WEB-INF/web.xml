@@ -5,12 +5,12 @@
 	version="3.0">
 	<display-name>Imixs-Microservice</display-name>
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
+		<welcome-file>/index.html</welcome-file>
 	</welcome-file-list>
 
 	<login-config>
 		<auth-method>BASIC</auth-method>
-		<realm-name>ApplicationRealm</realm-name>
+		<realm-name>imixsrealm</realm-name>
 	</login-config>
 	<security-constraint>
 		<web-resource-collection>
