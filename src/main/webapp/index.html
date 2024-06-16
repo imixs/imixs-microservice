@@ -78,23 +78,26 @@
 				<p>Imixs-Microservice is based on Eclipse Microprofile and supports the <a
 						href="https://download.eclipse.org/microprofile/microprofile-open-api-3.0/microprofile-openapi-spec-3.0.html">MicroProfile
 						OpenAPI Specification 3.0</a>.
-					You can open the OpenAPI documentation at <a href="/openapi">http://localhost:8080/openapi</a>.
+					You can open the OpenAPI documentation at <a class="sample-url"
+						href="/openapi">http://localhost:8080/openapi</a>
 				</p>
+				<h3>Swagger UI</h3>
 				<p>
-					In addition the project provides a Swagger UI for easy testing:
+					In addition the Imixs-Microservice offers a powerful and easy to use Swagger UI for testing:
 				</p>
 				<img src="openapi-ui.png" style="width: 800px;margin: 20px;" />
 				<p>
-					You can open the UI in your browser: <a href="/api/openapi-ui"
-						target="_blank">http://localhost:8080/api/openapi-ui</a>:
+					You can open the UI in your browser: <a href="/api/openapi-ui" class="sample-url"
+						target="_blank">http://localhost:8080/api/openapi-ui</a>
 				</p>
 
 				<h2>How to Deploy a BPMN Model</h2>
 				<p>
 					After you have setup the Imixs-Workfow Microservice you can deploy
-					a workflow Model. A workflow model can be created using the <a
-						href="http://www.imixs.org/doc/modelling/index.html" target="_blank">Imixs-BPMN eclipse
-						Plugin</a>. A workflow Model
+					a workflow Model. A workflow model can be created using the <a class="sample-url"
+						href="http://www.imixs.org/doc/modelling/index.html" target="_blank">Imixs-Open-BPMN or the
+						Imixs-BPMN Eclipse
+						Plugin</a> A workflow Model
 					can be deployed into the Imixs-Workflow using the 'Model-REST
 					service' interface. You can deploy the default 'Ticket Workflow'
 					using the curl command: <br />
@@ -105,13 +108,12 @@
 					project located at: /src/main/resources/ticket.bpmn</p>
 
 
-				<h2>Verify Model</h2>
+				<h3>Verify Models</h3>
 
 				<p>
-					To verify if the model was deployed successfully you can check the
+					To verify if the model was deployed successfully you can simply check the
 					deployed model version with the Rest API: <a href="./api/model" target="_blank"
 						class="sample-url">http://[YOURSERVER]/api/model</a>
-
 				</p>
 
 
@@ -120,7 +122,7 @@
 					to the Imixs-Microservice in the following :</p>
 
 
-				<pre><code style="background-color: transparent;color: #000;">&lt;document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
+				<pre class="imixs-code"><code>&lt;document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
 	&lt;item name="$modelversion"&gt;&lt;value xsi:type="xs:string"&gt;1.0&lt;/value&gt;&lt;/item&gt;
 	&lt;item name="$taskid"&gt;&lt;value xsi:type="xs:int"&gt;1000&lt;/value&gt;&lt;/item&gt;
 	&lt;item name="$eventid"&gt;&lt;value xsi:type="xs:int"&gt;10&lt;/value&gt;&lt;/item&gt;
@@ -137,7 +139,7 @@
 				<br /><br />
 				or you can even use simply a `curl` command from your command line:
 
-				<pre><code style="background-color: transparent;color: #000;">curl --user admin:adminadmin -H "Content-Type: application/xml" -H 'Accept: application/xml' -d  \
+				<pre class="imixs-code"><code>curl --user admin:adminadmin -H "Content-Type: application/xml" -H 'Accept: application/xml' -d  \
    '&lt;document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
 	&lt;item name="$modelversion"&gt;&lt;value xsi:type="xs:string"&gt;1.0&lt;/value&gt;&lt;/item&gt;
 	&lt;item name="$taskid"&gt;&lt;value xsi:type="xs:int"&gt;1000&lt;/value&gt;&lt;/item&gt;
@@ -150,15 +152,23 @@
   http://localhost:8080/api/workflow/workitem
 </code></pre>
 
+				<h3>Verify the tasklist</h3>
 				<p>The result can be verified by the following GET URI:</p>
 
 				<a href="./api/workflow/tasklist/creator/admin" target="_blank"
 					class="sample-url">http://[YOURSERVER]/api/tasklist/creator/admin</a>
 
 
+				<h2>More Information</h2>
 				<p>
-					<a href="https://github.com/imixs/imixs-microservice">See
-						the Imixs-Microservice Project on GitHub for further Information.</a>
+					You will find more information abut the Imixs-Workflow project at:
+				<ul>
+					<li><a href="https://www.imixs.org">Imixs-Workflow</a></li>
+					<li><a href="https://github.com/imixs/imixs-microservice">Imixs-Microservice Project on GitHub</a>
+					</li>
+					<li><a href="https://www.open-bpmn.org">Open-BPMN</a></li>
+					<li><a href="https://www.office-workflow.com">Imixs-Office-Workflow</a></li>
+				</ul>
 				</p>
 			</div>
 
