@@ -10,7 +10,7 @@ The Imixs-Microservice is running the [Imixs-Workflow Engine](https://www.imixs.
 
 Imixs-Microservice provides a Rest API to interact with the Imixs-Workflow Engine. 
 
-<img src="https://github.com/imixs/imixs-microservice/raw/master/screen_rest-ui-01" width="800" /> 
+<img src="screen_rest-ui-01.png" width="800" /> 
 
 See the [Imixs-Workflow Rest API](http://www.imixs.org/doc/restapi/index.html) for more information.
 
@@ -77,7 +77,7 @@ You can open the Imixs-Admin Client from your browser with at the following loca
 
 	http://localhost:8888/
 
-<img src="https://github.com/imixs/imixs-microservice/raw/master/screen_imixs-admin-client-01.png" width="800" /> 
+<img src="screen_imixs-admin-client-01.png" width="800" /> 
 
 The connect URL to connect the Imixs-Admin Tool with your microservice is *http://app:8080/api*
 
@@ -282,7 +282,7 @@ Imixs-Workflow supports both data formats - XML and JSON. It is recommended to u
 With the Microservice SAGA Pattern you can build a so called SAGA orchestrator to coordinate more complex business processes. The Imixs Project provides the sub project [Imixs SAGA](https://github.com/imixs/imixs-saga). This project extends the concepts of the Imixs-Microservice and allows the orchestration of multiple services within a microservice architecture. 
 
 
-# <img src="https://github.com/imixs/imixs-microservice/raw/master/small_h-trans.png">
+# <img src="small_h-trans.png">
 
 Imixs-Microservice provides a docker image, making it easy to run the Imixs-Microservice out of the box in a Docker container. This container image can be used for development as also for productive purpose. To start the Imixs-Microservice in a docker container you can define a container stack with Docker Compose. Docker Compose is a tool for defining and running a stack of multiple Docker containers.
 
@@ -464,7 +464,7 @@ To configure the prometheus data source just add the Prometheus service endpoint
 
 	http://prometheus:9090/
 	
-<img src="https://github.com/imixs/imixs-microservice/raw/master/screen_monitoring_grafana.png" width="800" /> 	
+<img src="screen_monitoring_grafana.png" width="800" /> 	
 
 
 # Contribute
