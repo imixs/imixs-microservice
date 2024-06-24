@@ -102,7 +102,7 @@ Imixs-Microservice automatically loads a default BPMN model from the location de
 
     curl --user admin:adminadmin --request POST -Tticket-en-1.0.0.bpmn http://localhost:8080/api/model/bpmn
 
-An example model is included in the Imixs-Microservice project located at: /src/model/ticket-en-1.0.0.bpmn
+An example model is included in the Imixs-Microservice project located at: /workflow/ticket-en-1.0.0.bpmn
 
 **NOTE:** cURL isn't installed in Windows by default. See the [Use Curl on Windows](https://stackoverflow.com/questions/9507353/how-do-i-install-and-use-curl-on-windows) discussion on stackoverflow.
  
@@ -341,7 +341,7 @@ You can define a model file to be updloaded during startup of the service. See t
 	      - "8787:8787"
 	    
 	    volumes:
-	      - ~/git/imixs-microservice/src/model/:/home/imixs/model/
+	      - ~/git/imixs-microservice/workflow/:/home/imixs/model/
  
 
 In this example the model project directory is mapped as a volume to the service instance /home/imixs/model/
@@ -371,11 +371,11 @@ The Imixs-Microservice project also includes a docker-compose-dev profile with a
 
 	$ docker-compose -f docker-compose-dev.yml up
 
-You can map a local deployment directory for hot-deployment and model soruces:
+You can map a local deployment directory for hot-deployment and model sources:
 
     ...
     volumes:
-	    - ~/git/imixs-microservice/src/model/:/home/imixs/model/
+	    - ~/git/imixs-microservice/workflow/:/home/imixs/model/
 	    - ~/git/imixs-microservice/src/docker/deployments:/opt/wildfly/standalone/deployments/
     ...
 

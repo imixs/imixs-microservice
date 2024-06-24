@@ -278,7 +278,7 @@
 		<!-- test directory for junit -->
 		<testResources>
 			<testResource>
-				<directory>${project.parent.basedir}/src/model</directory>
+				<directory>${project.parent.basedir}/workflow</directory>
 			</testResource>
 		</testResources>
 		<finalName>imixs-microservice</finalName>
