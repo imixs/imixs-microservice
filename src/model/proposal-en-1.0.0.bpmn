@@ -127,7 +127,7 @@
     <bpmn2:sequenceFlow id="SequenceFlow_11" sourceRef="Task_1" targetRef="IntermediateCatchEvent_1">
       <bpmn2:documentation id="documentation_O8sN9Q"/>
     </bpmn2:sequenceFlow>
-    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_7" imixs:activityid="20" name="Approve">
+    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_7" imixs:activityid="10" name="Approve">
       <bpmn2:extensionElements>
         <imixs:item name="rtfresultlog" type="CDATA">
           <imixs:value><![CDATA[Oder placed, payment initialized]]></imixs:value>
@@ -144,7 +144,7 @@
       <bpmn2:incoming>sequenceFlow_Wn3NGw</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_BYx0Eg</bpmn2:outgoing>
     </bpmn2:intermediateCatchEvent>
-    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_8" imixs:activityid="30" name="Reject">
+    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_8" imixs:activityid="20" name="Reject">
       <bpmn2:extensionElements>
         <imixs:item name="rtfresultlog" type="CDATA">
           <imixs:value><![CDATA[ticket solved by <itemvalue>namcurrentEditor</itemvalue>]]></imixs:value>
