@@ -447,6 +447,14 @@ To access the Imixs-Microservice form a Java application you can use the Imixs-W
 The Imixs-Microservice project provide a set of JUnit Tests. These tests can be used also as a starting point to learn how the RestService API works.
 
 
+## Single Page Application
+
+You can add also a Single-Page-Application into the Microservice to extend functionality. You can place your code into the /app/ directory. 
+In case of a Docker deployment you can also map this directory into the Wilfly target folder `/opt/jboss/wildfly/standalone/deployments/imixs-microservice.war/app/`
+
+**Note:** The `app/` directory is protected by default with the same security-constraint like the `api/` directory!
+
+
 # Monitoring
 
 You can use a monitoring tool chain to monitor and analyze the behavior of your microservice. The tool chain in Imixs-Microservice is build up on [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/). 

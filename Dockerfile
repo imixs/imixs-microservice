@@ -11,7 +11,9 @@ COPY ./docker/configuration/wildfly/*.properties /opt/jboss/wildfly/standalone/c
 COPY ./docker/configuration/wildfly/standalone.xml /opt/jboss/wildfly/standalone/configuration/
 
 # Deploy artefact
-ADD ./target/*.war /opt/jboss/wildfly/standalone/deployments/
+#ADD ./target/*.war /opt/jboss/wildfly/standalone/deployments/
+ADD ./target/imixs-microservice/ /opt/jboss/wildfly/standalone/deployments/imixs-microservice.war/
+COPY ./docker/configuration/wildfly/imixs-microservice.war.dodeploy /opt/jboss/wildfly/standalone/deployments/imixs-microservice.war.dodeploy
 WORKDIR /opt/jboss/wildfly
 # Run with management interface
 CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
