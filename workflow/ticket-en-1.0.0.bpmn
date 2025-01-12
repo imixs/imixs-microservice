@@ -28,13 +28,13 @@
     <bpmn2:association id="Association_2" sourceRef="CallConversation_1" targetRef="IntermediateCatchEvent_3"/>
     <bpmn2:callConversation id="CallConversation_1" name="Stock Service"/>
   </bpmn2:collaboration>
-  <bpmn2:process id="ticket" isExecutable="false" name="Ticket">
+  <bpmn2:process id="ticket" isExecutable="false" name="Ticket" processType="Public">
     <bpmn2:documentation id="documentation_efMtfA"/>
     <bpmn2:association id="association_zyyeqQ" sourceRef="message_1" targetRef="IntermediateCatchEvent_5">
       <bpmn2:documentation id="documentation_LPo29A"/>
     </bpmn2:association>
   </bpmn2:process>
-  <bpmn2:process definitionalCollaborationRef="Collaboration_1" id="Process_1" isExecutable="false" name="Ticket">
+  <bpmn2:process definitionalCollaborationRef="Collaboration_1" id="Process_1" isExecutable="false" name="Ticket" processType="Private">
     <bpmn2:laneSet id="LaneSet_4" name="Lane Set 4">
       <bpmn2:lane id="Lane_2" name="Customer">
         <bpmn2:flowNodeRef>IntermediateCatchEvent_1</bpmn2:flowNodeRef>
