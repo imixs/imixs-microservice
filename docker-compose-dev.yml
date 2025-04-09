@@ -1,5 +1,4 @@
 services:
-
   db:
     image: postgres:13.11
     environment:
@@ -14,8 +13,10 @@ services:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "adminadmin"
       POSTGRES_CONNECTION: "jdbc:postgresql://db/workflow"
+      #MODEL_DEFAULT_DATA: "/home/imixs/model/"
       MODEL_DEFAULT_DATA: "/home/imixs/model/ticket-en-1.0.0.bpmn"
       MODEL_DEFAULT_DATA_OVERWRITE: "true"
+
       # Payara-Micor ENV
       MP_OPENAPI_SERVERS: "http://localhost:8080"
     ports:
@@ -24,7 +25,9 @@ services:
       - "8787:8787"
     # Uncomment the following lines to add an optional single-page-application
     #volumes:
-      #- ./src/app/:/opt/jboss/wildfly/standalone/deployments/imixs-microservice.war/app/
+    #- ./src/app/:/opt/jboss/wildfly/standalone/deployments/imixs-microservice.war/app/
+    volumes:
+      - ./workflow/:/home/imixs/model/
 
   imixsadmin:
     image: imixs/imixs-admin
