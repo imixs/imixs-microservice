@@ -38,6 +38,14 @@ To start the service run:
 
 **Note:** The docker-compose.yaml file expects a data directory `./workflow/` providing the BPMN models to be automatically imported during startup. So just create a directory `workflow/` together with your docker-compose file.
 
+```
+.
+├── docker-compose.yaml
+└── workflow/
+    ├── order-en-1.0.0.bpmn
+    └── ticket-en-1.0.0.bpmn
+```
+
 The Imixs Rest API is available under the following URL
 
     http://localhost:8080/api
