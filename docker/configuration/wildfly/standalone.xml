@@ -86,6 +86,7 @@
     <profile>
         <subsystem xmlns="urn:jboss:domain:logging:8.0">
             <console-handler name="CONSOLE">
+                <!-- INFO | DEBUG -->
                 <level name="INFO" />
                 <formatter>
                     <named-formatter name="COLOR-PATTERN" />
@@ -111,6 +112,11 @@
             <logger category="sun.rmi">
                 <level name="WARN" />
             </logger>
+
+            <logger category="org.imixs">
+                <level name="DEBUG" />
+            </logger>
+
             <root-logger>
                 <level name="INFO" />
                 <handlers>
