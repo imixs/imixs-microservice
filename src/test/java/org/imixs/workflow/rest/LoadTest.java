@@ -116,17 +116,17 @@ public class LoadTest {
 				(successCount.get() * 100.0 / totalRequests) + "%");
 
 		if (!responseTimes.isEmpty()) {
-			// Durchschnittliche Antwortzeit
+			// average response time
 			double avgResponseTime = totalResponseTime.get() / (double) successCount.get();
 			System.out.println("Average response time: " + avgResponseTime + "ms");
 
-			// Min/Max Antwortzeiten
+			// Min/Max response time
 			long minTime = Collections.min(responseTimes);
 			long maxTime = Collections.max(responseTimes);
 			System.out.println("Min response time: " + minTime + "ms");
 			System.out.println("Max response time: " + maxTime + "ms");
 
-			// Perzentile berechnen
+			// compute average times
 			Collections.sort(responseTimes);
 			System.out.println("50th percentile (median): " +
 					responseTimes.get((int) (responseTimes.size() * 0.5)) + "ms");
@@ -135,7 +135,7 @@ public class LoadTest {
 			System.out.println("95th percentile: " +
 					responseTimes.get((int) (responseTimes.size() * 0.95)) + "ms");
 
-			// Durchsatz (Requests pro Sekunde)
+			// requests per second
 			double throughput = (successCount.get() * 1000.0) / totalTime;
 			System.out.println("Throughput: " + String.format("%.2f", throughput) + " requests/second");
 		}
