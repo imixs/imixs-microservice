@@ -30,7 +30,7 @@ Imixs-Microservice is based on the [Jakarta EE](https://jakarta.ee/) and [Eclips
 
 Imixs-Microservice provides also a docker image, making it easy to run the Imixs-Microservice out of the box in a Docker container. This container image can be used for development as also for productive purpose. The docker image is based on payara-micro which is optimized for cloud environments like Kubernetes, OpenShift or Docker-Swarm.
 
-To start the Imixs-Microservice you just need to define a container stack with Docker Compose. A docker-compose.yml file is already part of the project and can be downloaded from [here](https://github.com/imixs/imixs-microservice/blob/master/docker-compose.yml).
+To start the Imixs-Microservice you just need to define a container stack with Docker Compose. A docker-compose.yaml file is already part of the project and can be downloaded from [here](https://github.com/imixs/imixs-microservice/blob/master/docker-compose.yaml).
 
 To start the service run:
 
@@ -280,7 +280,7 @@ With the Microservice SAGA Pattern you can build a so called SAGA orchestrator t
 
 Imixs-Microservice provides a docker image, making it easy to run the Imixs-Microservice out of the box in a Docker container. This container image can be used for development as also for productive purpose. To start the Imixs-Microservice in a docker container you can define a container stack with Docker Compose. Docker Compose is a tool for defining and running a stack of multiple Docker containers.
 
-The following docker-compose.yml file defines the application stack consisting of a PostgreSQL database and a Imixs-Microservice service:
+The following docker-compose.yaml file defines the application stack consisting of a PostgreSQL database and a Imixs-Microservice service:
 
 ```yaml
 version: "3.3"
@@ -351,7 +351,7 @@ $ mvn clean install -Pdocker
 
 The Imixs-Microservice project also includes a docker-compose-dev profile with additional settings and services. To run the Imixs-Microservice in developer mode run:
 
-    $ docker-compose -f docker-compose-dev.yml up
+    $ docker-compose -f docker-compose-dev.yaml up
 
 You can map a local deployment directory for hot-deployment and model sources:
 
@@ -410,7 +410,7 @@ During development the wildfly runs in a debug mode listening on port 8787.
 
 The Imixs-Microservice expects a JPA database pool with the JNDI name 'imixs-microservice'. You can use any SQL database vendor. Just configure the JDBC database pool in your application server before your start the deployment.
 
-The _docker-compose.yml_ provided by this project already defines such a stack configuration located in _/src/docker/conf/standalone.xml/_
+The _docker-compose.yaml_ provided by this project already defines such a stack configuration located in _/src/docker/conf/standalone.xml/_
 
 ### The Imixs Rest Client
 
@@ -433,7 +433,7 @@ You can use a monitoring tool chain to monitor and analyze the behavior of your 
 
 To start the tool chain run:
 
-    $ docker-compose -f docker-compose-prometheus.yml up
+    $ docker-compose -f docker-compose-prometheus.yaml up
 
 This Docker Stack includes an additonal prometheus service and Grafana Service which allows you to monitor and analyze your business case.
 You can access the Grafana from your web browser:
