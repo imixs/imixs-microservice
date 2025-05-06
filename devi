@@ -32,7 +32,7 @@ if [[ "$(strip_dash $1)" == "docker" ]]; then
     if [[ $2 != "" ]]; then
         PLATFORM=$2
     fi   
-    IMAGENAME=imixs/imixs-process-manager
+    IMAGENAME=imixs/imixs-microservice
     echo " "
     echo "│  ├── platform: $PLATFORM"
 
