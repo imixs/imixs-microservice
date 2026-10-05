@@ -7,7 +7,7 @@ services:
       POSTGRES_DB: workflow
 
   app:
-    image: imixs/imixs-microservice:latest
+    image: imixs/imixs-microservice
     environment:
       WILDFLY_PASS: adminadmin
       POSTGRES_HOST: "db"

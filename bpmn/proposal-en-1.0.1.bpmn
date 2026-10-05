@@ -26,10 +26,13 @@
     <bpmn2:association id="Association_2" sourceRef="CallConversation_1" targetRef="IntermediateCatchEvent_3"/>
     <bpmn2:callConversation id="CallConversation_1" name="Stock Service"/>
   </bpmn2:collaboration>
-  <bpmn2:process id="ticket" isExecutable="false" name="Ticket">
+  <bpmn2:process id="ticket" isExecutable="false" name="Ticket" processType="Public">
     <bpmn2:documentation id="documentation_hijN6w"/>
+    <bpmn2:extensionElements>
+      <open-bpmn:auto-align/>
+    </bpmn2:extensionElements>
   </bpmn2:process>
-  <bpmn2:process definitionalCollaborationRef="Collaboration_1" id="Process_1" isExecutable="false" name="Proposal">
+  <bpmn2:process definitionalCollaborationRef="Collaboration_1" id="Process_1" isExecutable="false" name="Proposal" processType="Private">
     <bpmn2:laneSet id="LaneSet_4" name="Lane Set 4">
       <bpmn2:lane id="Lane_2" name="Team">
         <bpmn2:flowNodeRef>Task_2</bpmn2:flowNodeRef>
@@ -259,24 +262,24 @@
         <dc:Bounds height="89.0" width="176.0" x="183.0" y="166.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_1" id="BPMNEdge_SequenceFlow_1" sourceElement="BPMNShape_1" targetElement="BPMNShape_Task_1">
-        <bpmndi:BPMNLabel id="BPMNLabel_3" labelStyle="BPMNLabelStyle_1"/>
         <di:waypoint x="243.0" y="335.0"/>
         <di:waypoint x="300.0" y="335.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_3" labelStyle="BPMNLabelStyle_1"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_3" id="BPMNEdge_SequenceFlow_3" sourceElement="BPMNShape_IntermediateCatchEvent_1" targetElement="BPMNShape_D6F8wQ">
-        <bpmndi:BPMNLabel id="BPMNLabel_12" labelStyle="BPMNLabelStyle_1"/>
         <di:waypoint x="493.0" y="335.0"/>
         <di:waypoint x="540.0" y="335.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_12" labelStyle="BPMNLabelStyle_1"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_12" id="BPMNEdge_SequenceFlow_12" sourceElement="BPMNShape_Task_4" targetElement="BPMNShape_2">
-        <bpmndi:BPMNLabel id="BPMNLabel_26" labelStyle="BPMNLabelStyle_1"/>
         <di:waypoint x="1180.0" y="335.0"/>
         <di:waypoint x="1237.0" y="335.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_26" labelStyle="BPMNLabelStyle_1"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_11" id="BPMNEdge_SequenceFlow_11" sourceElement="BPMNShape_Task_1" targetElement="BPMNShape_IntermediateCatchEvent_1">
-        <bpmndi:BPMNLabel id="BPMNLabel_25"/>
         <di:waypoint x="410.0" y="335.0"/>
         <di:waypoint x="457.0" y="335.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_25"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="Association_2" id="BPMNEdge_Association_2" sourceElement="BPMNShape_CallConversation_1" targetElement="BPMNShape_IntermediateCatchEvent_3">
         <di:waypoint x="708.0" xsi:type="dc:Point" y="560.0"/>

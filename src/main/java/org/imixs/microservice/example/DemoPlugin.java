@@ -37,7 +37,7 @@ import org.imixs.workflow.engine.ModelService;
 import org.imixs.workflow.engine.plugins.AbstractPlugin;
 import org.imixs.workflow.exceptions.PluginException;
 
-import jakarta.ejb.EJB;
+import jakarta.inject.Inject;
 
 /**
  * This Plugin demonstrates the CDI behavior of an imixs workflow pugin.
@@ -50,7 +50,7 @@ import jakarta.ejb.EJB;
 public class DemoPlugin extends AbstractPlugin {
 
     // inject services...
-    @EJB
+    @Inject
     ModelService modelService;
 
     private static Logger logger = Logger.getLogger(DemoPlugin.class.getName());
@@ -59,7 +59,7 @@ public class DemoPlugin extends AbstractPlugin {
         // here we can initialize optional components
     }
 
-    public ItemCollection run(ItemCollection documentContext, ItemCollection adocumentActivity) throws PluginException {
+    public ItemCollection run(ItemCollection workitem, ItemCollection adocumentActivity) throws PluginException {
 
         // test model service
         List<String> versions = modelService.getVersions();
@@ -68,9 +68,9 @@ public class DemoPlugin extends AbstractPlugin {
         }
 
         // add a custom item
-        documentContext.setItemValue("_some_item", "Hello World");
+        workitem.setItemValue("_some_item", "Hello World");
 
-        return documentContext;
+        return workitem;
     }
 
     @Override

@@ -36,7 +36,7 @@ import org.imixs.workflow.SignalAdapter;
 import org.imixs.workflow.engine.ModelService;
 import org.imixs.workflow.exceptions.AdapterException;
 
-import jakarta.ejb.EJB;
+import jakarta.inject.Inject;
 
 /**
  * This adapter class demonstrates the CDI behavior of an imixs workflow
@@ -50,13 +50,13 @@ import jakarta.ejb.EJB;
 public class DemoAdapter implements SignalAdapter {
 
     // inject services...
-    @EJB
+    @Inject
     ModelService modelService;
 
     private static Logger logger = Logger.getLogger(DemoAdapter.class.getName());
 
     @Override
-    public ItemCollection execute(ItemCollection document, ItemCollection event) throws AdapterException {
+    public ItemCollection execute(ItemCollection workitem, ItemCollection event) throws AdapterException {
 
         logger.info("...running demo adapter...");
         // test model service
@@ -65,7 +65,7 @@ public class DemoAdapter implements SignalAdapter {
             logger.info("ModelVersion found: " + aversion);
         }
 
-        return document;
+        return workitem;
     }
 
 }
