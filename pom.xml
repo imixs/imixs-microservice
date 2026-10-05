@@ -9,24 +9,27 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.imixs.workflow.version>6.2.5-SNAPSHOT</org.imixs.workflow.version>
+		<org.imixs.workflow.version>6.2.9</org.imixs.workflow.version>
 		<microprofile.version>6.0</microprofile.version>
 		<junit.jupiter.version>5.9.2</junit.jupiter.version>
 		<org.imixs.melman.version>2.1.0</org.imixs.melman.version>
 		<custom.webResources>src/main/webapp</custom.webResources>
+		<docker.image>imixs/imixs-microservice</docker.image>
 	</properties>
 
 	<repositories>
-		<!-- Sonatype Snapshot repository -->
 		<repository>
-			<id>oss-snapshots</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<id>central-portal-snapshots</id>
+			<name>Central Portal Snapshots</name>
+			<url>https://central.sonatype.com/repository/maven-snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
 		</repository>
 	</repositories>
-
 
 	<licenses>
 		<license>
@@ -52,10 +55,10 @@
 								<phase>install</phase>
 								<configuration>
 									<target>
-										<exec executable="docker">
+										<exec executable="docker" failonerror="true">
 											<arg value="build" />
 											<arg value="-t" />
-											<arg value="imixs/imixs-microservice" />
+											<arg value="${docker.image}" />
 											<arg value="." />
 										</exec>
 									</target>
@@ -83,12 +86,12 @@
 								<phase>install</phase>
 								<configuration>
 									<target>
-										<exec executable="docker">
+										<exec executable="docker" failonerror="true">
 											<arg value="build" />
 											<arg value="-f" />
 											<arg value="Dockerfile-Debug" />
 											<arg value="-t" />
-											<arg value="imixs/imixs-microservice" />
+											<arg value="${docker.image}" />
 											<arg value="./" />
 										</exec>
 									</target>
@@ -118,13 +121,13 @@
 								<phase>install</phase>
 								<configuration>
 									<target>
-										<exec executable="docker">
+										<exec executable="docker" failonerror="true">
 											<arg value="build" />
 											<arg value="-t" />
 											<arg value="imixs/imixs-microservice:${project.version}" />
 											<arg value="." />
 										</exec>
-										<exec executable="docker">
+										<exec executable="docker" failonerror="true">
 											<arg value="push" />
 											<arg value="imixs/imixs-microservice:${project.version}" />
 										</exec>
@@ -154,13 +157,13 @@
 								<phase>install</phase>
 								<configuration>
 									<target>
-										<exec executable="docker">
+										<exec executable="docker" failonerror="true">
 											<arg value="build" />
 											<arg value="-t" />
 											<arg value="imixs/imixs-microservice:latest" />
 											<arg value="." />
 										</exec>
-										<exec executable="docker">
+										<exec executable="docker" failonerror="true">
 											<arg value="push" />
 											<arg value="imixs/imixs-microservice:latest" />
 										</exec>
@@ -223,12 +226,12 @@
 								<configuration>
 
 									<target>
-										<exec executable="docker">
+										<exec executable="docker" failonerror="true">
 											<arg value="build" />
 											<arg value="-f" />
 											<arg value="Dockerfile-wildfly" />
 											<arg value="-t" />
-											<arg value="imixs/imixs-microservice" />
+											<arg value="${docker.image}" />
 											<arg value="./" />
 										</exec>
 									</target>
@@ -306,7 +309,7 @@
 		<!-- test directory for junit -->
 		<testResources>
 			<testResource>
-				<directory>${project.parent.basedir}/workflow</directory>
+				<directory>${project.basedir}/workflow</directory>
 			</testResource>
 		</testResources>
 		<finalName>imixs-microservice</finalName>
